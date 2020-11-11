@@ -82,7 +82,7 @@ $signUp.on('click','.submit-btn',function(){
             _run = false;
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8080/allproject/user/insertUser',
+                url: 'http://bei.keaikai.com/allproject/user/insertUser',
                 data: JSON.stringify({
                     userName: form.name.value,
                     mobile: form.tel.value,
