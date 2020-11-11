@@ -1,0 +1,16 @@
+dependencies {
+
+    compile project(':dao')
+    compile project(':service')
+
+
+    compile "junit:junit:4.12"
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile "junit:junit:4.12"
+
+}

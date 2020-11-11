@@ -1,0 +1,5 @@
+rootProject.name = 'allproject'
+include 'dao'
+include 'service'
+include 'web'
+

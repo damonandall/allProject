@@ -1,0 +1,8 @@
+dependencies {
+
+    compile project(':dao')
+    compile "org.springframework.boot:spring-boot:${springBootVersion}"
+    compile "org.apache.commons:commons-lang3:3.1"
+    compile "org.apache.curator:curator-framework:${curatorVersion}"
+    compile "org.springframework.retry:spring-retry:1.2.4.RELEASE"
+}

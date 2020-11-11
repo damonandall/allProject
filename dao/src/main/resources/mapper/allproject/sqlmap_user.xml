@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ectocyst.allproject.dao.UserDAO">
+    <resultMap id="BaseResultMap" type="com.ectocyst.allproject.dao.DO.UserDO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="mobile" jdbcType="BIGINT" property="mobile"/>
+        <result column="room_num" jdbcType="VARCHAR" property="roomNum"/>
+        <result column="sign_day" jdbcType="VARCHAR" property="signDay"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id,user_name,mobile,room_num,sign_day,`type`
+    </sql>
+
+
+    <insert id="insert" parameterType="com.ectocyst.allproject.dao.DO.UserDO">
+    insert into user(user_name,mobile,room_num,sign_day,`type`)values( #{userName,jdbcType=VARCHAR},
+     #{mobile,jdbcType=BIGINT},#{roomNum,jdbcType=VARCHAR},#{signDay,jdbcType=VARCHAR},#{type,jdbcType=INTEGER})
+    </insert>
+
+    <select id="selectCountByDay" resultType="Long">
+    select count(*) from user where
+    sign_day = #{signDay,jdbcType=VARCHAR}
+    and `type` = #{type,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectUser" resultMap="BaseResultMap" parameterType="com.ectocyst.allproject.dao.DO.UserDO">
+        select * from user where
+        user_name = #{userName,jdbcType=VARCHAR}
+        and mobile = #{mobile,jdbcType=BIGINT}
+        and room_num = #{roomNum,jdbcType=VARCHAR}
+        and `type` = #{type,jdbcType=INTEGER}
+    </select>
+</mapper>
+

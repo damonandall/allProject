@@ -1,0 +1,175 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+/*版本号*/
+ext{
+
+    projectVersion = '2.0.1-RELEASE'
+    springBootVersion = '2.1.4.RELEASE'
+    slf4jVersion = '1.7.12'
+    druidVersion = '1.0.14'
+    curatorVersion = '2.12.0'
+    shardingJdbcVersion='3.0.0'
+
+
+}
+
+/*项目名称、版本号*/
+group = 'com.ectocyst'
+version = "${projectVersion}"
+sourceCompatibility = '1.8'
+
+
+// 应用build 可执行jar包
+apply plugin: 'application'
+mainClassName = 'com.ectocyst.allproject.AllprojectApplication'
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.ectocyst.allproject.AllprojectApplication'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+/*
+    所有项目依赖
+ */
+allprojects {
+
+    group = 'com.ectocyst'
+    version = "${projectVersion}"
+//    sourceCompatibility = '1.8'
+
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: 'jacoco'
+
+    idea {
+        module {
+            downloadSources = true
+            downloadJavadoc = true
+        }
+    }
+
+    configurations {
+        provided
+        compile.extendsFrom provided
+        deployerJars
+        all*.exclude group: 'log4j'
+        all*.exclude group: 'org.slf4j',  module: 'slf4j-log4j12'
+        all*.exclude module: 'commons-logging'
+        //oss SDK
+        all*.exclude group:  "com.aliyun.oss"
+        //cloudstack 之前闪电购项目  teambuy 对此无依赖
+        all*.exclude group: "com.aifocus",module:"cloudstack-jobcenter"
+        all*.exclude group: "com.aifocus",module:"cloudstack-mqtt"
+        all*.exclude group: "com.aifocus",module:"cloudstack-monitor"
+        //支付宝支付 SDK
+        all*.exclude group: "com.alipay.sdk"
+        //数据源 HikariCP 包，有druid 了，还要这玩意干嘛，脚踩两条船啊
+        all*.exclude group: "com.zaxxer"
+        // API 开发工具 swagger 的东西 用不到
+        all*.exclude group: "io.springfox"
+        // API 开发工具 swagger
+        all*.exclude group: "io.swagger"
+        //前后端分离了都 留着 JSP 考古吗
+        all*.exclude group: "javax.servlet.jsp"
+        //处理控制台输入的类库，Web 项目要这玩意干嘛？
+        all*.exclude group: "jline"
+        //这真的只是一个简简单单的 Web 项目，查查库就好了 要搜索引擎干嘛
+        all*.exclude group: "org.apache.lucene"
+        //ES这个东西
+        all*.exclude group: "org.elasticsearch"
+        all*.exclude group: "org.elasticsearch.plugin"
+        all*.exclude group: "org.elasticsearch.client"
+        all*.exclude group: "com.aifocus",module: "es-client"
+
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    repositories {
+        maven {
+            name 'Nexus osc'
+            url 'http://maven.oschina.net/content/groups/public/'
+        }
+        mavenLocal()
+    }
+
+
+
+
+    configurations.all {
+
+        resolutionStrategy {
+            // check for updates every build
+            cacheChangingModulesFor 0, 'seconds'
+
+            force "org.slf4j:slf4j-api:${slf4jVersion}"
+            force "org.slf4j:slf4j-log4j12:${slf4jVersion}"
+            force "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
+            force "org.slf4j:log4j-over-slf4j:${slf4jVersion}"
+            force 'log4j:log4j:1.2.17'
+            force "org.apache.commons:commons-lang3:3.1"
+            force "org.mybatis:mybatis:3.5.1"
+            force "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+            force "org.apache.curator:curator-framework:2.12.0"
+            force "io.netty:netty-all:4.1.44.Final"
+            force "redis.clients:jedis:2.6.3"
+            force "org.aspectj:aspectjweaver:1.8.4"
+            force "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+            force "org.apache.curator:curator-framework:${curatorVersion}"
+            force "org.springframework.boot:spring-boot-starter-log4j2:${springBootVersion}"
+
+
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    //java8 doc兼容性
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+    }
+
+
+    repositories {
+        jcenter()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    //在多模块下，不然编译失败，因为不会把信赖模块给打包
+    jar {
+        enabled = true
+    }
+}
+
+/*
+ 子项目依赖
+ */
+subprojects {
+    dependencies {
+        deployerJars "org.apache.maven.wagon:wagon-http:2.2"
+        annotationProcessor 'org.projectlombok:lombok:1.18.2'
+        compileOnly 'org.projectlombok:lombok:1.18.2'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+        testCompileOnly 'org.projectlombok:lombok:1.18.2'
+
+    }
+
+}
+
