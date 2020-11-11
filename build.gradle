@@ -23,10 +23,10 @@ sourceCompatibility = '1.8'
 
 // 应用build 可执行jar包
 apply plugin: 'application'
-mainClassName = 'com.ectocyst.allproject.AllprojectApplication'
+mainClassName = 'com.ectocyst.allproject.AllprojectWebApplication'
 jar {
     manifest {
-        attributes 'Main-Class': 'com.ectocyst.allproject.AllprojectApplication'
+        attributes 'Main-Class': 'com.ectocyst.allproject.AllprojectWebApplication'
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }

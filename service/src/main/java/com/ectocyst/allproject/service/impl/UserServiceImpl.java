@@ -32,8 +32,6 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("前面排队的人过多，请稍后重试。。");
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         String key = stringKey(userDO.getUserName(), userDO.getMobile(), userDO.getRoomNum());
 
         Future future = valueComputeFutureMap.get(key);
