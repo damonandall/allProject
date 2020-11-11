@@ -7,6 +7,7 @@ import com.ectocyst.allproject.result.Result;
 import com.ectocyst.allproject.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,12 @@ public class UserController {
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
     @ResponseBody
     public Result insertUser(@RequestBody UserReq userReq) {
+        try {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date parse = simpleDateFormat.parse("2020-11-16 00:00:00");
+            if(new Date().after(parse)){
+                return Result.fail(101,"活动已结束");
+            }
 
         if(userReq == null){
             return Result.fail(101,"参数为空");
@@ -67,7 +74,7 @@ public class UserController {
 
         userDO.setSignDay(getDay(userReq.getTime()));
 
-        try {
+
             Integer integer = userService.insertUser(userDO);
 
             if(integer == 1){
@@ -75,10 +82,13 @@ public class UserController {
             }else {
                 return Result.buildSuccess("报名失败，请重试！");
             }
+        }catch (DuplicateKeyException e){
+            return Result.fail(101,"您已经报名！");
         }catch (RuntimeException e){
             return Result.fail(101,e.getMessage());
+        }catch (Exception e){
+            return Result.fail(101,"请稍后重试！");
         }
-
     }
 
     private String getDay(Integer time) {

@@ -4,6 +4,7 @@ import com.ectocyst.allproject.dao.DO.UserDO;
 import com.ectocyst.allproject.dao.UserDAO;
 import com.ectocyst.allproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
                     UserDO user = userDAO.selectUser(userDO);
 
-                    if(user != null && user.getSignDay().equals(userDO.getSignDay())){
+                    if(user != null){
                         throw new RuntimeException("您已经报名!");
                     }
 
@@ -76,6 +77,12 @@ public class UserServiceImpl implements UserService {
             if (cause instanceof ExecutionException) {
                 cause = cause.getCause();
             }
+
+            // 运行时异常执行抛出
+            if (cause instanceof DuplicateKeyException) {
+                throw (DuplicateKeyException) cause;
+            }
+
             // 运行时异常执行抛出
             if (cause instanceof RuntimeException) {
                 throw (RuntimeException) cause;
