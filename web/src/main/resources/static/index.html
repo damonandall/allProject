@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>11月14-15日【浓情意式 饕餮大餐】报名表</title>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body style="background-color:#dfdfdf;">
+<div class="loading" id="loading">
+    <div class="loading-center-absolute clearfix">
+        <div class="loading-item"></div>
+        <div class="loading-item"></div>
+        <div class="loading-item"></div>
+        <div class="loading-item"></div>
+    </div>
+    <p class="loading-progress">Loading...<span id="load-progress">1</span>%</p>
+</div>
+<div class="page signUp hide" id="signUp">
+    <p class="img01">
+        <img src="img/p1-1.png" />
+        <img src="img/p1-12.png" />
+    </p>
+    <p class="img02"><img src="img/p1-2.png" /></p>
+	<p class="img03"><img src="img/p1-3.png" /></p>
+    <form class="form" name="form">
+        <p class="tips"><img src="img/p1-4.png" /></p>
+        <label class="form-item input-item">
+            <img src="img/p1-5.png" />
+            <span><input type="text" name="name" placeholder="" value=""></span>
+        </label>
+        <label class="form-item input-item">
+            <img src="img/p1-6.png" />
+            <span><input type="tel" name="tel" maxlength="11" placeholder="" value=""></span>
+        </label>
+        <label class="form-item input-item">
+            <img src="img/p1-7.png" />
+            <span><input type="text" name="room" placeholder="例：1-1-101" value=""></span>
+        </label>
+        <div class="form-item radio-item">
+            <img src="img/p1-8.png" />
+            <label class="form-radio-item form-radio-item-1">
+                <input type="radio" name="time" value="1" />
+                <img src="img/p1-9.png" class="icon1" />
+                <img src="img/p1-10.png" class="icon2" />
+            </label>
+            <label class="form-radio-item form-radio-item-2">
+                <input type="radio" name="time" value="2" />
+                <img src="img/p1-9.png" class="icon1" />
+                <img src="img/p1-10.png" class="icon2" />
+            </label>
+        </label>
+        <p class="submit-btn"><img src="img/p1-11.png" /></p>
+    </form>
+</div>
+
+<script src="js/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/wxsdk.js"></script>
+<script>
+window.wxShare && window.wxShare({
+  img     : "img/share.jpg",    // 头图
+  linkurl : "",             // 分享链接
+  desc    : "",
+  title   : "11月14-15日【浓情意式 饕餮大餐】报名表"
+});
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
