@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
                     }
 
                     Long tatalCount = userDAO.selectCountByDay(userDO.getSignDay(),userDO.getType());
-                    if(tatalCount >= 1){
+                    if(tatalCount >= 50){
                         throw new RuntimeException("友情提醒：感谢您的参与和支持，很遗憾本场活动报名人数已满，敬请关注下一场！");
                     }
 
