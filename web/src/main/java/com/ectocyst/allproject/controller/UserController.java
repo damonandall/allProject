@@ -93,9 +93,9 @@ public class UserController {
 
     private String getDay(Integer time) {
         if(time == 1){
-            return "2020-11-14";
+            return "2020-11-21";
         }
-            return "2020-11-15";
+            return "2020-11-22";
     }
 
 
