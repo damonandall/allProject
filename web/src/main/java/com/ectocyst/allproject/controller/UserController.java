@@ -38,7 +38,7 @@ public class UserController {
     public Result insertUser(@RequestBody UserReq userReq) {
         try {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date parse = simpleDateFormat.parse("2020-11-16 00:00:00");
+            Date parse = simpleDateFormat.parse("2020-11-23 00:00:00");
             if(new Date().after(parse)){
                 return Result.fail(101,"活动已结束");
             }
@@ -70,7 +70,7 @@ public class UserController {
         userDO.setUserName(userReq.getUserName());
         userDO.setMobile(userReq.getMobile());
         userDO.setRoomNum(userReq.getRoomNum());
-        userDO.setType(EnumType.WANG_CHENG_FU.getType());
+        userDO.setType(EnumType.WANG_CHENG_FU_TWO.getType());
 
         userDO.setSignDay(getDay(userReq.getTime()));
 

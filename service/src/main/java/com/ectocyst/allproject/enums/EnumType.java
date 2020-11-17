@@ -8,7 +8,9 @@ package com.ectocyst.allproject.enums;
  */
 public enum EnumType {
 
-    WANG_CHENG_FU(1,"望辰府");
+    WANG_CHENG_FU(1,"望辰府"),
+    WANG_CHENG_FU_TWO(2,"望辰府")
+    ;
 
     private Integer type;
     private String desc;
