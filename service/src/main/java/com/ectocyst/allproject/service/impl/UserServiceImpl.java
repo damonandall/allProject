@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
                     }
 
                     Long tatalCount = userDAO.selectCountByDay(userDO.getSignDay(),userDO.getType());
-                    if(tatalCount >= 50){
+                    if(tatalCount >= 120){
                         throw new RuntimeException("友情提醒：感谢您的参与和支持，很遗憾本场活动报名人数已满，敬请关注下一场！");
                     }
 
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
                 cause = cause.getCause();
             }
 
-            // 运行时异常执行抛出
+            // 主键冲突异常执行抛出
             if (cause instanceof DuplicateKeyException) {
                 throw (DuplicateKeyException) cause;
             }

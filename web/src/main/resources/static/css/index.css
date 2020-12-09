@@ -68,31 +68,31 @@ p img:not(:first-child){position:absolute;width:100%;left:0;top:0}
 .signUp img{visibility:hidden}
 .signUp.animate img{visibility:visible}
 .signUp .img01{top:3.5%}
-.signUp .img02{top:18%}
+.signUp .img02{top:17%}
 .signUp .img03{bottom:4.5%}
 .signUp.animate .img01 img:nth-child(2){-webkit-animation:fadeInLeft 1s ease both;animation:fadeInLeft 1s ease both}
 .signUp.animate .img01 img:nth-child(1){-webkit-animation:fadeInRight 1s ease both;animation:fadeInRight 1s ease both}
 .signUp.animate .img02{-webkit-animation:zoomIna 1s ease both;animation:zoomIna 1s ease both}
 .signUp.animate .img03{-webkit-animation:fadeInUp 2s ease both;animation:fadeInUp 2s ease both}
 input,select,textarea{-webkit-appearance:none;outline:0;border:none;border-radius:0;background:0 0}
-::-webkit-input-placeholder{color:#999}
-:-moz-placeholder{color:#999}
-::-moz-placeholder{color:#999}
-:-ms-input-placeholder{color:#999}
-.signUp .form{position:absolute;width:50%;left:25%;top:50.5%;visibility:hidden}
+::-webkit-input-placeholder{color:#fff}
+:-moz-placeholder{color:#fff}
+::-moz-placeholder{color:#fff}
+:-ms-input-placeholder{color:#fff}
+.signUp .form{position: absolute; width: 40%; left: 10%; top: 50.5%;visibility:hidden}
 .signUp .form .tips{position:static}
 .signUp .form .form-item{display:block;position:relative}
 .signUp .form .input-item span{position:absolute;top:50%;right:9%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:auto;left:32%}
-.signUp .form .input-item span input{display:block;width:95%;margin:0 auto;font-size:.8rem;line-height:1.5;color:#333}
-.signUp .form .radio-item .form-radio-item{display:block;position:absolute;width:56%;overflow:hidden;left:43%}
+.signUp .form .input-item span input{display:block;width:95%;margin:0 auto;font-size:.8rem;line-height:1.5;color:#fff}
+.signUp .form .radio-item .form-radio-item{display:block;position:absolute;width:42%;overflow:hidden;left:58%}
 .signUp .form .radio-item .form-radio-item input{position:absolute;left:-99em;top:0}
 .signUp .form .radio-item .form-radio-item .icon1{display:block}
 .signUp .form .radio-item .form-radio-item .icon2{display:none}
 .signUp .form .radio-item .form-radio-item.current .icon1{display:none}
 .signUp .form .radio-item .form-radio-item.current .icon2{display:block}
-.signUp .form .radio-item .form-radio-item-1{top:38%}
-.signUp .form .radio-item .form-radio-item-2{top:73%}
-.signUp .form .submit-btn{width:31%;position:static;margin:1.5rem auto 0}
+.signUp .form .radio-item .form-radio-item-1{top:40%}
+.signUp .form .radio-item .form-radio-item-2{top:65%}
+.signUp .form .submit-btn{width:40%;position:static;margin:1rem auto 0}
 .signUp.animate .form{-webkit-animation:fadeInUp 1s ease both;animation:fadeInUp 1s ease both;visibility:visible}
 .signUp.animate .submit-btn img{-webkit-animation:scale1 1s .5s infinite linear;animation:scale1 1s .5s infinite linear}
 @-webkit-keyframes scale1{
