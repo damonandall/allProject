@@ -62,7 +62,7 @@ p img:not(:first-child){position:absolute;width:100%;left:0;top:0}
 }
 
 .hide{display:none}
-.signUp{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:url(../img/p1.jpg) no-repeat center center/100% 100%}
+.signUp{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:url(../img/p16.jpeg) no-repeat center center/100% 100%}
 .signUp.s1{background-size:auto 100%}
 .signUp.s2{background-size:100% auto}
 .signUp img{visibility:hidden}

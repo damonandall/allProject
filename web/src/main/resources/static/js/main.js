@@ -112,7 +112,7 @@ $signUp.on('click','.submit-btn',function(){
     $(this).parents('.form-radio-item').addClass('current').siblings('.form-radio-item').removeClass('current');
 });
 
-var loadRES = ['img/p1.jpg','img/p1-1.png','img/p1-2.png','img/p1-3.png','img/p1-4.png','img/p1-5.png','img/p1-6.png','img/p1-7.png','img/p1-8.png','img/p1-9.png','img/p1-10.png','img/p1-11.png'];
+var loadRES = ['img/p16.jpeg','img/p1-1.png','img/p1-2.png','img/p1-3.png','img/p1-4.png','img/p1-5.png','img/p1-6.png','img/p1-7.png','img/p1-8.png','img/p1-9.png','img/p1-10.png','img/p1-11.png'];
 loading(loadRES,function(){
 	$signUp.removeClass('hide').addClass('animate');
 });
